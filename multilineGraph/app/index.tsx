@@ -9,21 +9,19 @@ import { LinearGradient } from 'expo-linear-gradient'
 import * as Haptics from 'expo-haptics'
 
 import { generateRandomGraphData,generateSinusGraphData } from '../data/GraphData'
-import { GraphDisplayModeSelector } from '../components/GraphDisplayModeSelector'
 import { useColors } from '../hooks/useColor'
-import { GraphDisplayMode } from '@/constants/GraphDisplayConstant'
 import { useGraphPath } from '@/hooks/GraphPathGenerator'
 import XAxisComponent from '@/components/XaxisComponent'
 import YAxisComponent from '@/components/YaxisComponent'
 import { GraphPoint } from 'react-native-graph'
 import { usePanGesture } from 'react-native-graph/src/hooks/usePanGesture'
 import OverlappingGraphs from '@/components/OverlappingGraphs'
-import SelectionDot from '@/components/Cursor'
+import SelectionDot from '@/components/SelectionDot'
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window')
 export const CHART_HEIGHT = 250
 export const CHART_PADDING = 10
-export const CHART_WIDTH = SCREEN_WIDTH - 40 // Subtracting 40 for left and right margins
+export const CHART_WIDTH = SCREEN_WIDTH - 40 
 export const BACKGROUND_COLOR = '#8e7cc3'
 
 export interface Graphs {
@@ -40,7 +38,7 @@ export default function InteractiveGraph() {
     CYAN: '#00FFFF',
     GREEN: '#00FF7F',
   }
-  const [graphDisplay, setGraphDisplay] = useState<GraphDisplayMode>(0)
+
   const [multiGraphs, setMultiGraphs] = useState<Graphs>({
     G1: generateRandomGraphData(20),
     G2: generateRandomGraphData(20),
@@ -133,7 +131,6 @@ export default function InteractiveGraph() {
             </Animated.View>
           </GestureDetector>
         </View>
-        <GraphDisplayModeSelector style={styles.graphMode} graphDisplayMode={graphDisplay} setGraphDisplayMode={setGraphDisplay} />
         <Button title="Refresh" onPress={refreshData} color={colors.primary} />
       </SafeAreaView>
     </GestureHandlerRootView>

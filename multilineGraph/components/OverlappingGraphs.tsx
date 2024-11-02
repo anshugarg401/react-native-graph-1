@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { AnimatedLineGraph, AnimatedLineGraphProps } from './AnimatedLineGraph'
-import { point, SkPath } from '@shopify/react-native-skia'
+
 import HoverBox from './HoverBox'
-import { createGraphPath, createGraphPathWithGradient } from 'react-native-graph/src/CreateGraphPath'
+
 
 interface OverlappingGraphsProps {
   graphs: AnimatedLineGraphProps[]
@@ -20,8 +20,6 @@ const OverlappingGraphs: React.FC<OverlappingGraphsProps> = ({ graphs, width, he
         <View key={index} style={StyleSheet.absoluteFill}>
           <AnimatedLineGraph
             {...graphProps}
-            width={width}
-            height={height}
           />
         </View>
       ))}
@@ -33,8 +31,6 @@ const OverlappingGraphs: React.FC<OverlappingGraphsProps> = ({ graphs, width, he
             translationY={graphProps.y}
             points = {graphProps.points}
         isActive={graphProps.isActive}
-            // commands={graphProps.commands}
-            // path={graphProps.path}
             range={graphProps.range}
             color={graphProps.color}
           />

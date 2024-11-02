@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react'
 import { useWindowDimensions } from 'react-native'
-import { Circle, Group, Path, Shadow, Skia, useFont } from '@shopify/react-native-skia'
+import { Circle, Group, Path, Shadow, Skia } from '@shopify/react-native-skia'
 import {
   runOnJS,
-  SharedValue,
   useAnimatedReaction,
   useDerivedValue,
   useSharedValue,
@@ -30,7 +29,6 @@ const SelectionDot: React.FC<SelectionDotProps> = ({ circleX: cx, circleY: cy, i
 
     return dottedLine
   }, [isActive, cx, cy, height])
-console.log(height)
   const setIsActive = useCallback(
     (active: boolean) => {
       circleRadius.value = withSpring(active ? CIRCLE_RADIUS : 0, {
